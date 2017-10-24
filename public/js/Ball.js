@@ -2,8 +2,8 @@ import Vector from './Vector.js';
 import Rect from './Rect.js';
 
 export default class Ball extends Rect {
-    constructor(width, height) {
-        super(width, height);
+    constructor(size) {
+        super(size, size);
         this._vel = new Vector();
     }
 
@@ -18,8 +18,9 @@ export default class Ball extends Rect {
 
     render(context) {
         context.fillStyle = 'white';
-        context.fillRect(this.pos.x, this.pos.y,
-            this.size.x, this.size.y);
+        context.beginPath();
+        context.arc(this.pos.x, this.pos.y, this.size.x, 0, 2 * Math.PI);
+        context.fill();
     }
 }
 
