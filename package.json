@@ -1,10 +1,15 @@
 {
   "name": "pong",
   "version": "1.0.0",
-  "description": "Pong game",
+  "description": "Pong Game",
   "main": "public/js/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve ./public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rstar2/js_pong.git"
   },
   "author": "Rumen Neshev",
   "license": "MIT",
