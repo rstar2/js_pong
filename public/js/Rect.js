@@ -15,18 +15,18 @@ export default class Rect {
     }
 
     get left() {
-        return this._pos.x - this._size.x/2;
+        return this._pos.x - this._size.x / 2;
     }
 
     get right() {
-        return this._pos.x + this._size.x/2;
+        return this._pos.x + this._size.x / 2;
     }
 
     get top() {
-        return this._pos.y - this._size.y/2;
+        return this._pos.y - this._size.y / 2;
     }
 
     get bottom() {
-        return this._pos.y + this._size.y;
+        return this._pos.y + this._size.y / 2;
     }
 }

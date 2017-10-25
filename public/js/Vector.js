@@ -19,4 +19,16 @@ export default class Vector {
     set y(y) {
         this._y = y;
     }
+
+    get len() {
+        // return the length of the hypotenuse
+        return Math.sqrt(this._x * this._x + this._y * this._y);
+    }
+
+    set len(value) {
+        // set new length
+        const factor = value / this.len;
+        this._x *= factor;
+        this._y *= factor;
+    }
 }
