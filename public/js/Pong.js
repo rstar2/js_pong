@@ -3,6 +3,34 @@ import Ball from './Ball.js';
 import PlayerAI from './PlayerAI.js';
 import PlayerUser from './PlayerUser.js';
 
+/*
+  0     1     2     3  .....  9
+ --------------------------------
+ 111   010   111   111        111
+ 101   010   001   001        101
+ 101   010   111   111        111
+ 101   010   100   001        001
+ 111   010   111   111        111
+
+ --------------------------------
+ 0 => '111101101101111'
+ 1 => '010010010010010',
+
+
+*/
+const DIGITS = [
+    '111101101101111',
+    '010010010010010',
+    '111001111100111',
+    '111001111001111',
+    '101101111001001',
+    '111100111001111',
+    '111100111101111',
+    '111001001001001',
+    '111101111101111',
+    '111101111001111'
+];
+
 export default class Pong {
     constructor(canvas) {
         this._canvas = canvas;
@@ -24,6 +52,25 @@ export default class Pong {
 
         canvas.addEventListener('mousemove', event => this._players[0].move(event));
         canvas.addEventListener('click', () => this._start());
+
+        const charPixels = 10;
+        // so each digit canvas will be 30x50 pixels width/height
+        // and thus each char in it will be 10 pixels
+        this._digits = DIGITS.map(str => {
+            const digit = document.createElement('canvas');
+            digit.width = 5 * charPixels;
+            digit.height = 3 * charPixels;
+            const ctx = digit.getContext('2d');
+            ctx.fillStyle = '#fff';
+            str.split('').forEach((char, index) => {
+                if (char === '1') {
+                    ctx.fillRect((index % 3) * index,
+                        (index / 3 | 0) * charPixels,
+                        charPixels, charPixels);
+                }
+            });
+            return digit;
+        });
 
         this._reset();
     }
@@ -92,15 +139,33 @@ export default class Pong {
     }
 
     _render() {
+        // clear all - draw all black
         this._context.fillStyle = 'black';
         this._context.fillRect(0, 0, this._canvas.width, this._canvas.height);
 
+        // draw the ball
+        this._ball.render(this._context);
+
+        // draw each player
         this._players.forEach(player => player.render(this._context));
 
-        this._ball.render(this._context);
+        // draw the score
+        this._players.forEach((player, index) => {
+            // make the number a string
+            const score = "" + player.score;
+            const digits = score.split('');
+
+            // draw each individual digit of the score
+            digits.forEach((digit, index) => {
+                // TODO:
+            });
+
+        });
     }
 
     start() {
         this._timer.start();
     }
 }
+
+// TODO: scale the whole canvas in the center of a bigger HTML body 

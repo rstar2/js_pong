@@ -6,6 +6,7 @@ export default class PlayerUser extends Player {
     }
 
     move(event) {
+        // TODO: 
         // just fallow the mouse
         this._pos.y = event.offsetY;
     }
