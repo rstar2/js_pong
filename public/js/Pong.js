@@ -70,7 +70,7 @@ export default class Pong {
             update: this._update.bind(this), render: this._render.bind(this)
         });
 
-        canvas.addEventListener('mousemove', event => this._players[0].move(event, canvas));
+        canvas.addEventListener('mousemove', event => this._players[0].move(event));
         canvas.addEventListener('click', () => this._start());
 
         this._reset();
