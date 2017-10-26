@@ -1,8 +1,8 @@
 import Rect from './Rect.js';
 
 export default class Ball extends Rect {
-    constructor(width, height) {
-        super(width, height);
+    constructor(width, height, color) {
+        super(width, height, color);
         this._score = 0;
     }
 
@@ -15,15 +15,6 @@ export default class Ball extends Rect {
     }
 
     update() {
-    }
-
-    render(context) {
-        context.fillStyle = 'red';
-        context.fillRect(this.left, this.top, this._size.x, this._size.y);
-
-        // // draw the center
-        // context.fillStyle = 'yellow';
-        // context.fillRect(this.pos.x, this.pos.y, 1, 1);
     }
 }
 

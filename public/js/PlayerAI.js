@@ -1,8 +1,8 @@
 import Player from './Player.js';
 
 export default class PlayerAI extends Player {
-    constructor(width, height) {
-        super(width, height);
+    constructor(width, height, color) {
+        super(width, height, color);
     }
 
     update(dt, ball) {

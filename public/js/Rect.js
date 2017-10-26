@@ -1,9 +1,10 @@
 import Vector from './Vector.js';
 
 export default class Rect {
-    constructor(width, height) {
+    constructor(width, height, color='white') {
         this._pos = new Vector();
         this._size = new Vector(width, height);
+        this._color = color;
     }
 
     get pos() {
@@ -28,5 +29,14 @@ export default class Rect {
 
     get bottom() {
         return this._pos.y + this._size.y / 2;
+    }
+    
+    render(context) {
+        context.fillStyle = this._color;
+        context.fillRect(this.left, this.top, this._size.x, this._size.y);
+
+        // // draw the center
+        // context.fillStyle = 'yellow';
+        // context.fillRect(this.pos.x, this.pos.y, 1, 1);
     }
 }
